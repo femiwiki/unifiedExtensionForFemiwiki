@@ -162,7 +162,8 @@ EOF;
 	 * @param string &$ret
 	 * @return bool
 	 */
-	public static function onHtmlPageLinkRendererBegin( LinkRenderer $linkRenderer, LinkTarget $target, &$text, &$extraAttribs, &$query, &$ret ) {
+	public static function onHtmlPageLinkRendererBegin( LinkRenderer $linkRenderer, LinkTarget $target, &$text,
+		&$extraAttribs, &$query, &$ret ) {
 		// See https://github.com/femiwiki/UnifiedExtensionForFemiwiki/issues/23
 		if ( defined( 'MW_PHPUNIT_TEST' ) && ( $target == 'Rights Page' || $target == 'Parser test' ) ) {
 			return true;
