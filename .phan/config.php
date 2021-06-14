@@ -9,8 +9,6 @@ $cfg['directory_list'] = array_merge(
 		'../../extensions/Disambiguator',
 		'../../extensions/PageViewInfo',
 		'../../extensions/Wikibase',
-		'vendor/google/apiclient/',
-		'vendor/google/apiclient-services/',
 	]
 );
 
@@ -21,8 +19,6 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 		'../../extensions/Disambiguator',
 		'../../extensions/PageViewInfo',
 		'../../extensions/Wikibase',
-		'vendor/google/apiclient/',
-		'vendor/google/apiclient-services/',
 	]
 );
 
