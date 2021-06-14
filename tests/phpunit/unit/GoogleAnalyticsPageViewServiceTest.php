@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\UnifiedExtensionForFemiwiki\Tests\Unit;
 
 use InvalidArgumentException;
+use MediaWiki\Extension\UnifiedExtensionForFemiwiki\GoogleAnalyticsPageViewService;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use Wikimedia\TestingAccessWrapper;
