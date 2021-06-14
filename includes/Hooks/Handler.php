@@ -171,7 +171,7 @@ EOF;
 	) {
 		// See https://github.com/femiwiki/UnifiedExtensionForFemiwiki/issues/23
 		if ( defined( 'MW_PHPUNIT_TEST' ) && in_array( $target, [
-				'Link_to_nowhere',
+				'Link to nowhere',
 				'Link',
 				'Parser test',
 				'Rights Page',
