@@ -37,7 +37,7 @@
     "HtmlPageLinkRendererBegin": "default",
     "LinkerMakeExternalLink": "default",
     "OutputPageParserOutput": "RelatedArticles",
-    "PageViewInfoGetPageViewService": "MediaWiki\\Extension\\UnifiedExtensionForFemiwiki\\Hooks\\PageViewInfoHandler::onPageViewInfoGetPageViewService",
+    "PageViewInfoAfterPageViewService": "MediaWiki\\Extension\\UnifiedExtensionForFemiwiki\\Hooks\\PageViewInfoHandler::onPageViewInfoAfterPageViewService",
     "SidebarBeforeOutput": "default",
     "SkinAddFooterLinks": "default"
   },

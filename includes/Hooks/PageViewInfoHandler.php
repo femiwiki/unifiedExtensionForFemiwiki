@@ -11,7 +11,7 @@ class PageViewInfoHandler {
 	 * @param PageViewService &$service
 	 * @return bool|void
 	 */
-	public static function onPageViewInfoGetPageViewService( &$service ) {
+	public static function onPageViewInfoAfterPageViewService( &$service ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$credentialsFile = $config->get( 'UnifiedExtensionForFemiwikiGoogleAnalyticsCredentialsFile' );
 		$profileId = $config->get( 'UnifiedExtensionForFemiwikiGoogleAnalyticsProfileId' );
