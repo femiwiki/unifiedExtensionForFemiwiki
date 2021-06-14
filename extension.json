@@ -36,9 +36,10 @@
     "BeforePageDisplay": "default",
     "HtmlPageLinkRendererBegin": "default",
     "LinkerMakeExternalLink": "default",
+    "OutputPageParserOutput": "RelatedArticles",
+    "PageViewInfoGetPageViewService": "MediaWiki\\Extension\\UnifiedExtensionForFemiwiki\\Hooks\\PageViewInfoHandler::onPageViewInfoGetPageViewService",
     "SidebarBeforeOutput": "default",
-    "SkinAddFooterLinks": "default",
-    "OutputPageParserOutput": "RelatedArticles"
+    "SkinAddFooterLinks": "default"
   },
   "SpecialPages": {
     "OrderedWhatlinkshere": {
@@ -58,8 +59,17 @@
   "config": {
     "GoogleAnalyticsTrackingID": {
       "value": ""
+    },
+    "UnifiedExtensionForFemiwikiGoogleAnalyticsCredentialsFile": {
+      "value": false,
+      "description": "The file name of the credentials from the Google API Console."
+    },
+    "UnifiedExtensionForFemiwikiGoogleAnalyticsProfileId": {
+      "value": false,
+      "description": "Profile(View) ID of the Google Analytics View. You can use the Account Explorer to find a View ID"
     }
   },
+  "load_composer_autoloader": true,
   "TestAutoloadNamespaces": {
     "MediaWiki\\Extension\\UnifiedExtensionForFemiwiki\\Tests\\Unit\\": "tests/phpunit/unit/"
   },
