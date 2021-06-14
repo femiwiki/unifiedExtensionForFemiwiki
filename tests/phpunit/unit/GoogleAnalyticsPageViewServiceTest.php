@@ -2,10 +2,14 @@
 
 namespace MediaWiki\Extension\UnifiedExtensionForFemiwiki\Tests\Unit;
 
+use Exception;
 use InvalidArgumentException;
 use MediaWiki\Extension\UnifiedExtensionForFemiwiki\GoogleAnalyticsPageViewService;
+use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
+use Status;
+use Title;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -23,7 +27,7 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 	protected function assertThrows( $class, callable $test ) {
 		try {
 			$test();
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			$this->assertInstanceOf( $class, $e );
 			return;
 		}
@@ -120,10 +124,12 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 			] );
 		}
 
-		$status = $service->getPageData( [ \Title::newFromText( 'Foo' ),
-			\Title::newFromText( 'Bar' ) ], 5 );
+		$status = $service->getPageData( [
+			Title::newFromText( 'Foo' ),
+			Title::newFromText( 'Bar' )
+		], 5 );
 		if ( !$status->isGood() ) {
-			$this->fail( \Status::wrap( $status )->getWikiText() );
+			$this->fail( Status::wrap( $status )->getWikiText() );
 		}
 		$this->assertSame( [
 			'Foo' => [
@@ -156,11 +162,11 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 		] );
 		$this->mockNextBatchGet( $service, [] );
 		$this->mockNextBatchGet( $service, false );
-		$status = $service->getPageData( [ \Title::newFromText( 'A' ),
-			\Title::newFromText( 'B' ), \Title::newFromText( 'C' ) ], 1 );
+		$status = $service->getPageData( [ Title::newFromText( 'A' ),
+			Title::newFromText( 'B' ), Title::newFromText( 'C' ) ], 1 );
 		$this->assertFalse( $status->isGood() );
 		if ( !$status->isOK() ) {
-			$this->fail( \Status::wrap( $status )->getWikiText() );
+			$this->fail( Status::wrap( $status )->getWikiText() );
 		}
 		$this->assertSame( [
 			'A' => [
@@ -181,7 +187,7 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 		self::$batches = [];
 		$this->mockNextBatchGet( $service, false );
 		$this->mockNextBatchGet( $service, false );
-		$status = $service->getPageData( [ \Title::newFromText( 'A' ), \Title::newFromText( 'B' ) ], 1 );
+		$status = $service->getPageData( [ Title::newFromText( 'A' ), Title::newFromText( 'B' ) ], 1 );
 		$this->assertFalse( $status->isOK() );
 		$this->assertSame( [ 'A' => false, 'B' => false ], $status->success );
 		$this->assertSame( 0, $status->successCount );
@@ -212,7 +218,7 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 		] );
 		$status = $service->getSiteData( 5 );
 		if ( !$status->isGood() ) {
-			$this->fail( \Status::wrap( $status )->getWikiText() );
+			$this->fail( Status::wrap( $status )->getWikiText() );
 		}
 		$this->assertSame( [
 			'2000-01-01' => 1000,
@@ -227,7 +233,7 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 		$this->mockNextBatchGet( $service, [] );
 		$status = $service->getSiteData( 5 );
 		if ( !$status->isGood() ) {
-			$this->fail( \Status::wrap( $status )->getWikiText() );
+			$this->fail( Status::wrap( $status )->getWikiText() );
 		}
 		$this->assertSame( [
 			'2000-01-01' => null,
@@ -268,7 +274,7 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 		] );
 		$status = $service->getSiteData( 5, PageViewService::METRIC_UNIQUE );
 		if ( !$status->isGood() ) {
-			$this->fail( \Status::wrap( $status )->getWikiText() );
+			$this->fail( Status::wrap( $status )->getWikiText() );
 		}
 		$this->assertSame( [
 			'2000-01-01' => 1000,
@@ -283,7 +289,7 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 		$this->mockNextBatchGet( $service, [] );
 		$status = $service->getSiteData( 5, PageViewService::METRIC_UNIQUE );
 		if ( !$status->isGood() ) {
-			$this->fail( \Status::wrap( $status )->getWikiText() );
+			$this->fail( Status::wrap( $status )->getWikiText() );
 		}
 		$this->assertSame( [
 			'2000-01-01' => null,
@@ -324,7 +330,7 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 		] );
 		$status = $service->getTopPages();
 		if ( !$status->isGood() ) {
-			$this->fail( \Status::wrap( $status )->getWikiText() );
+			$this->fail( Status::wrap( $status )->getWikiText() );
 		}
 		$this->assertSame( [
 			'Main_Page' => 1000,
@@ -337,7 +343,7 @@ class GoogleAnalyticsPageViewServiceTest extends TestCase {
 		$this->mockNextBatchGet( $service, [] );
 		$status = $service->getTopPages();
 		if ( !$status->isGood() ) {
-			$this->fail( \Status::wrap( $status )->getWikiText() );
+			$this->fail( Status::wrap( $status )->getWikiText() );
 		}
 		$this->assertSame( [], $status->getValue() );
 
