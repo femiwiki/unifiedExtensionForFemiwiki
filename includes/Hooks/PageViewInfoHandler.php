@@ -63,6 +63,11 @@ EOF;
 	 */
 	public static function onPageViewInfoAfterPageViewService( &$service ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
+		if ( !$config->get( 'UnifiedExtensionForFemiwikiEnableGoogleAnalytics' ) ) {
+			return;
+		}
+		wfDeprecatedMsg( 'Use of GoogleAnalytics in UnifiedExtensionForFemiwiki is marked as deprecated. ' .
+			'Consider install Extension:PageViewInfoGA instead.', '1.37' );
 		$credentialsFile = $config->get( 'UnifiedExtensionForFemiwikiGoogleAnalyticsCredentialsFile' );
 		$profileId = $config->get( 'UnifiedExtensionForFemiwikiGoogleAnalyticsProfileId' );
 

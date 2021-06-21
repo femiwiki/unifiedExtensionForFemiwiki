@@ -64,13 +64,17 @@
     "GoogleAnalyticsTrackingID": {
       "value": ""
     },
+    "UnifiedExtensionForFemiwikiEnableGoogleAnalytics": {
+      "value": true,
+      "description": "Enables GoogleAnalytics which is marked as deprecated in this extension. Consider installing Extension:PageViewInfoGA instead."
+    },
     "UnifiedExtensionForFemiwikiGoogleAnalyticsCredentialsFile": {
       "value": false,
-      "description": "The file name of the credentials from the Google API Console."
+      "description": "[deprecated] The file name of the credentials from the Google API Console. Consider installing Extension:PageViewInfoGA instead."
     },
     "UnifiedExtensionForFemiwikiGoogleAnalyticsProfileId": {
       "value": false,
-      "description": "Profile(View) ID of the Google Analytics View. You can use the Account Explorer to find a View ID"
+      "description": "[deprecated] Profile(View) ID of the Google Analytics View. You can use the Account Explorer to find a View ID. Consider installing Extension:PageViewInfoGA instead."
     },
     "UnifiedExtensionForFemiwikiRelatedArticlesUseLinks": {
       "value": true,
