@@ -5,8 +5,7 @@ Versions and bullets are arranged chronologically from latest to oldest.
 ## Unreleased
 
 - Queries more fields of RelatedArticles to fix cache.
-- Adds custom dimensions to GoogleAnalytics.
-- GoogleAnalytics support is marked as deprecated. Consider installing Extension:PageViewInfoGA instead.
+- Drops Google Analytics. Consider installing Extension:PageViewInfoGA instead.
 
 ## v1.2.2
 

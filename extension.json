@@ -30,18 +30,12 @@
     "RelatedArticles": {
       "class": "MediaWiki\\Extension\\UnifiedExtensionForFemiwiki\\Hooks\\RelatedArticlesHandler",
       "services": ["MainConfig", "DBLoadBalancer"]
-    },
-    "PageViewInfo": {
-      "class": "MediaWiki\\Extension\\UnifiedExtensionForFemiwiki\\Hooks\\PageViewInfoHandler",
-      "services": ["MainConfig"]
     }
   },
   "Hooks": {
-    "BeforePageDisplay": "PageViewInfo",
     "HtmlPageLinkRendererBegin": "default",
     "LinkerMakeExternalLink": "default",
     "OutputPageParserOutput": "RelatedArticles",
-    "PageViewInfoAfterPageViewService": "MediaWiki\\Extension\\UnifiedExtensionForFemiwiki\\Hooks\\PageViewInfoHandler::onPageViewInfoAfterPageViewService",
     "SidebarBeforeOutput": "default",
     "SkinAddFooterLinks": "default"
   },
@@ -61,21 +55,6 @@
     "UnifiedExtensionForFemiwiki": ["i18n"]
   },
   "config": {
-    "GoogleAnalyticsTrackingID": {
-      "value": ""
-    },
-    "UnifiedExtensionForFemiwikiEnableGoogleAnalytics": {
-      "value": true,
-      "description": "Enables GoogleAnalytics which is marked as deprecated in this extension. Consider installing Extension:PageViewInfoGA instead."
-    },
-    "UnifiedExtensionForFemiwikiGoogleAnalyticsCredentialsFile": {
-      "value": false,
-      "description": "[deprecated] The file name of the credentials from the Google API Console. Consider installing Extension:PageViewInfoGA instead."
-    },
-    "UnifiedExtensionForFemiwikiGoogleAnalyticsProfileId": {
-      "value": false,
-      "description": "[deprecated] Profile(View) ID of the Google Analytics View. You can use the Account Explorer to find a View ID. Consider installing Extension:PageViewInfoGA instead."
-    },
     "UnifiedExtensionForFemiwikiRelatedArticlesUseLinks": {
       "value": true,
       "description": "If set to true, Related Articles on a page would show links from the page and links to the page."
@@ -85,7 +64,6 @@
       "description": "An array of namespaces which can be a target for RelatedArticles. Empty array means allowing all namespaces."
     }
   },
-  "load_composer_autoloader": true,
   "TestAutoloadNamespaces": {
     "MediaWiki\\Extension\\UnifiedExtensionForFemiwiki\\Tests\\Unit\\": "tests/phpunit/unit/"
   },
