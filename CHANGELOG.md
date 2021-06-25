@@ -2,7 +2,7 @@
 
 Versions and bullets are arranged chronologically from latest to oldest.
 
-## Unreleased
+## v2.0.0
 
 - Queries more fields of RelatedArticles to fix cache.
 - Drops Google Analytics. Consider installing Extension:PageViewInfoGA instead.
