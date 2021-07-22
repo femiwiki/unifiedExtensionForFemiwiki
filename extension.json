@@ -55,6 +55,10 @@
     "UnifiedExtensionForFemiwiki": ["i18n"]
   },
   "config": {
+    "UnifiedExtensionForFemiwikiPreAuth": {
+      "value": false,
+      "description": "If set to true, creating account would require an additional step."
+    },
     "UnifiedExtensionForFemiwikiRelatedArticlesUseLinks": {
       "value": true,
       "description": "If set to true, Related Articles on a page would show links from the page and links to the page."
