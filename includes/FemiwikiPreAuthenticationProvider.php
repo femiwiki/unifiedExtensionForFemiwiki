@@ -19,11 +19,10 @@ class FemiwikiPreAuthenticationProvider extends AbstractPreAuthenticationProvide
 	 * @return AuthenticationRequest[]
 	 */
 	public function getAuthenticationRequests( $action, array $options ) {
-		if ( $action === AuthManager::ACTION_CREATE ) {
-			return [ new FemiwikiAuthenticationRequest() ];
-		} else {
+		if ( !$this->config->get( 'UnifiedExtensionForFemiwikiPreAuth' ) || $action != AuthManager::ACTION_CREATE ) {
 			return [];
 		}
+		return [ new FemiwikiAuthenticationRequest() ];
 	}
 
 	/**
@@ -35,14 +34,17 @@ class FemiwikiPreAuthenticationProvider extends AbstractPreAuthenticationProvide
 	 * @return StatusValue
 	 */
 	public function testForAccountCreation( $user, $creator, array $reqs ) {
+		if ( !$this->config->get( 'UnifiedExtensionForFemiwikiPreAuth' ) ) {
+			return Status::newGood();
+		}
+
 		/** @var FemiwikiAuthenticationRequest $req */
 		$req = AuthenticationRequest::getRequestByClass( $reqs, FemiwikiAuthenticationRequest::class );
 
 		if ( self::testInternal( $req->femiwikiOpenSesame ) ) {
 			return Status::newGood();
-		} else {
-			return Status::newFatal( 'unifiedextensionforfemiwiki-createaccount-fail' );
 		}
+		return Status::newFatal( 'unifiedextensionforfemiwiki-createaccount-fail' );
 	}
 
 	/**
