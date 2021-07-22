@@ -144,12 +144,7 @@ class Handler implements
 		&$customAttribs, &$query, &$ret
 	) {
 		// See https://github.com/femiwiki/UnifiedExtensionForFemiwiki/issues/23
-		if ( defined( 'MW_PHPUNIT_TEST' ) && in_array( $target, [
-				'Link to nowhere',
-				'Link',
-				'Parser test',
-				'Rights Page',
-			] ) ) {
+		if ( defined( 'MW_PHPUNIT_TEST' ) ) {
 			return true;
 		}
 
